@@ -3,7 +3,7 @@ $(document).ready(function(){
         'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails%2Cstatus', {
             maxResults: 5,
             playlistId: 'UUTI5S0PqpgB0DbYgcgRU6QQ',
-            key: API_KEY // Create a .env file with: API_KEY = 'Your API Key here' in the js folder
+            key: API_KEY // Create a new env.js file in the js folder with: API_KEY = 'Your API Key here' 
         },
         function(data) {
             $.each(data.items, function(i, item) {
