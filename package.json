@@ -1,0 +1,20 @@
+{
+  "name": "ge-codechallenges",
+  "version": "1.0.0",
+  "description": "Some code challenges for GE.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyle-barth/GE-CodeChallenges.git"
+  },
+  "author": "Kyle Barth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kyle-barth/GE-CodeChallenges/issues"
+  },
+  "homepage": "https://github.com/kyle-barth/GE-CodeChallenges#readme",
+  "dependencies": {}
+}
