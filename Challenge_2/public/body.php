@@ -15,9 +15,7 @@
                 </ol>
             </div>
 
-            <div class='content-block' id='results'>
-                <?php echo $error ?>
-            </div>
+            <?php echo $error ?>
         </div>
     </body>
 </html>
