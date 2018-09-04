@@ -11,6 +11,9 @@
             // require the create, edit & delete buttons
             require 'buttons.php';
 
+            // this is the form that will allow the user to create or edit an event
+            require 'event_form.php';
+
             // list the events
             require 'list-events.php';
         };

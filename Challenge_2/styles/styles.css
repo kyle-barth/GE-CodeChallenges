@@ -66,6 +66,13 @@ ol {
     text-decoration: none;
     width: 8rem;
 }
+.submit-button {
+    margin: -2.3rem 0 0 .1rem;
+    float: right;
+}
+#event_form {
+    display: none;
+}
 
 /* Table - https://www.youtube.com/watch?v=bHFoobciCTM */
 table {

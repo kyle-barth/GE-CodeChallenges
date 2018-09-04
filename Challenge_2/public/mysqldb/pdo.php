@@ -27,7 +27,7 @@
     };
 
     // require the functions for Create, Edit & Delete
-    // require '../functions/create.php';
+    require './functions/create.php';
     // require '../functions/edit.php';
     require './functions/delete.php';
 ?>

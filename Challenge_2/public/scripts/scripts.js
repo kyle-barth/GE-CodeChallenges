@@ -16,24 +16,12 @@ function getRaidioBtnSelected(radioBtnName) {
 
 // create
 function onCreate() {
-    const checkedBoxes = getCheckedBoxes("event_checkboxes")
-    alert(checkedBoxes)
+    document.getElementById('event_form').style.display = 'block'
 }
 
 // edit
 function onEdit() {
-    const checkedBoxes = getCheckedBoxes("event_checkboxes")
-    
-    if (!checkedBoxes) {
-        // user didn't select an option
-        alert('You must select an option to edit!')
-    } else if  (checkedBoxes.length > 1) {
-        // user selected more than 1 option
-        alert('You can only edit 1 option at a time!')
-    } else {
-        // do something
-        window.location.search += '&event_checkboxes=' + checkedBoxes[0]
-    }
+    document.getElementById('event_form').style.display = 'block'
 }
 
 // delete
