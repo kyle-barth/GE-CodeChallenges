@@ -7,6 +7,7 @@
                 <h2>Tech Stack:</h2>
                 <ol>
                     <li>PHP</li>
+                    <li>JavaScript</li>
                     <li>HTML 5</li>
                     <li>CSS 3</li>
                     <li>MySQL</li>

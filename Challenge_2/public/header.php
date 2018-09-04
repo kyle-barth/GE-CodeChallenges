@@ -4,6 +4,7 @@
         <meta charset='UTF-8'>
         <link rel='icon' type='image/png' href='./images/favicon.png'/>
         <link rel='stylesheet' type='text/css' href='../styles/styles.css'/>
+        <script src="./scripts/scripts.js"></script> 
         <title><?php echo $title ?></title>
     </head>
     <body>
