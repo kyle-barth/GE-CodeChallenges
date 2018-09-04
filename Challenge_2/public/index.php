@@ -7,6 +7,6 @@
     $title = 'Challenge 2';
     require 'header.php';
 
-    // require the ody
-    require 'body.php';
+    // require the body
+    require './body/body.php';
 ?>
