@@ -25,4 +25,9 @@
             </div>
         '; // in a real system you'd probably not want to print out the technical error message like this
     };
+
+    // require the functions for Create, Edit & Delete
+    // require '../functions/create.php';
+    // require '../functions/edit.php';
+    require './functions/delete.php';
 ?>

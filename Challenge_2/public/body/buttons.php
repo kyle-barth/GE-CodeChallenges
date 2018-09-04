@@ -2,13 +2,13 @@
     <div class="button-container">
         <ul class="flex-container space-between">
             <li class="flex-item">
-                <button onclick="" class="button">Create</a>
+                <button onclick="onCreate()" class="button">Create</a>
             </li>
             <li class="flex-item">
-                <button onclick="alertBoxes()" class="button">Edit</a>
+                <button onclick="onEdit()" class="button">Edit</a>
             </li>
             <li class="flex-item">
-                <button onclick="alertBoxes()" class="button">Delete</a>
+                <button onclick="onDelete()" class="button">Delete</a>
             </li>
         </ul>
     </div>

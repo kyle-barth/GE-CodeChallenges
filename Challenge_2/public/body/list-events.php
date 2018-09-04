@@ -5,7 +5,7 @@
             <h2>Events</h2>
             <table>
                 <tr>
-                    <th>Event id</th> 
+                    <th>ID</th> 
                     <th>Title</th> 
                     <th>Date</th>
                     <th>Select</th>
@@ -26,7 +26,7 @@
                     $row['date'] .
                 '</td>
                 <td> 
-                    <input type="checkbox" name="event_checkboxes" value="' . 
+                    <input type="radio" name="event_radioBtns" value="' . 
                         $row['event_id'] .
                     '">
                 </td>

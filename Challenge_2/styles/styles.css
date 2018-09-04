@@ -10,7 +10,9 @@ body {
 }
 #container {
     max-width: 60rem;
+    min-width: 30rem;
     margin: 0 auto;
+    padding: 0 1.5rem 0 1.5rem;
 }
 h2 {
     margin: 0;

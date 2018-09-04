@@ -7,7 +7,7 @@
 			$this->table = $table;
 		}
 		function search($field, $value) {
-	    $stmt = $this->pdo->prepare("SELECT * FROM " . $this->table . " " . $field . " ". $value);
+	    	$stmt = $this->pdo->prepare("SELECT * FROM " . $this->table . " " . $field . " ". $value);
 			if (isset($value)) {
 				$criteria = [
 					'value' => $value

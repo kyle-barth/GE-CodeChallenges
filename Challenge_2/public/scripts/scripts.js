@@ -1,32 +1,57 @@
-// Pass the checkbox name to the function
-function getCheckedBoxes(chkboxName) {
-    var checkboxes = document.getElementsByName(chkboxName)
-    var checkboxesChecked = []
+// Pass the checkbox name to the function - https://stackoverflow.com/questions/8563240/how-to-get-all-checked-checkboxes
+function getRaidioBtnSelected(radioBtnName) {
+    const radioBtns = document.getElementsByName(radioBtnName)
+    let radioBtnSelected = null
     // loop over them all
-    for (var i=0; i<checkboxes.length; i++) {
+    for (let i=0; i<radioBtns.length; i++) {
         // And stick the checked ones onto an array...
-        if (checkboxes[i].checked) {
-            checkboxesChecked.push(checkboxes[i].value)
+        if (radioBtns[i].checked) {
+            radioBtnSelected = radioBtns[i].value
+            break;
         }
     }
     // Return the array if it is non-empty, or null
-    return checkboxesChecked.length > 0 ? checkboxesChecked : null
+    return radioBtnSelected
 }
 
 // create
-function alertBoxes() {
-    var checkedBoxes = getCheckedBoxes("event_checkboxes")
+function onCreate() {
+    const checkedBoxes = getCheckedBoxes("event_checkboxes")
     alert(checkedBoxes)
 }
 
 // edit
 function onEdit() {
-    var checkedBoxes = getCheckedBoxes("event_checkboxes")
-    alert(checkedBoxes)
+    const checkedBoxes = getCheckedBoxes("event_checkboxes")
+    
+    if (!checkedBoxes) {
+        // user didn't select an option
+        alert('You must select an option to edit!')
+    } else if  (checkedBoxes.length > 1) {
+        // user selected more than 1 option
+        alert('You can only edit 1 option at a time!')
+    } else {
+        // do something
+        window.location.search += '&event_checkboxes=' + checkedBoxes[0]
+    }
 }
 
 // delete
-function onEdit() {
-    var checkedBoxes = getCheckedBoxes("event_checkboxes")
-    alert(checkedBoxes)
+function onDelete() {
+    const radioBtnSelected = getRaidioBtnSelected('event_radioBtns')
+    
+    if (!radioBtnSelected) {
+        // user didn't select an option
+        alert('You must select an option to delete!')
+    } else {
+        // do something
+        window.location.search += '&event_radioBtns=' + radioBtnSelected
+    }
+}
+
+function createMessage(message) {
+    alert(message)
+    let url = window.location.href
+    url = url.substring(0, url.indexOf("?"))
+    window.location = url
 }
