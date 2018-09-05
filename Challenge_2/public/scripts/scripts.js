@@ -1,31 +1,55 @@
 // create
 function onCreate() {
-    document.getElementById('event_form').style.display = 'block'
+    appendCurrentURL('&display=true&create=true')
 }
 
 // edit
 function onEdit() {
-    document.getElementById('event_form').style.display = 'block'
-}
-
-// submit
-function onSubmit() {
-    if (!document.getElementById('event_form_title') || !document.getElementById('event_form_date')) {
-        // user left a field blank
-        alert('You can\'t leave a field blank!')
-    }
+    checkOptionSelected('edit')
 }
 
 // delete
 function onDelete() {
+    checkOptionSelected('delete')
+}
+
+// submit 
+function onSubmit() {
+    $("#event_form").submit(function (e) {
+        e.preventDefault();
+    });
+
+    let title = document.getElementById('event_form_title').value
+    let date = document.getElementById('event_form_date').value
+
+    //appendCurrentURL('&title=' + document.getElementById('event_form_title').value + '&date=' + document.getElementById('event_form_date').value)
+
+    if (title && date && title.value != '' && date.value != '') {
+        appendCurrentURL('&title=' + title + '&date=' + date)
+    }
+    else {
+        createMessage("You can\'t leave any fields blank!")
+    }
+
+}
+
+// checks if the user selected a radio button or not, outputs a message if not
+function checkOptionSelected(tmp) {
     const radioBtnSelected = getRaidioBtnSelected('event_radioBtns')
-    
+    let bool = true
+
     if (!radioBtnSelected) {
         // user didn't select an option
-        alert('You must select an option to delete!')
+        alert('You must select an option to ' + tmp + '!')
     } else {
-        // do something
-        window.location.search += '&event_radioBtns=' + radioBtnSelected
+        if (tmp === 'delete') {
+            // do delete stuff
+            appendCurrentURL('&display=true&delete=true&event_radioBtns=' + radioBtnSelected)
+        }
+        else {
+            // do edit stuff
+            appendCurrentURL('&display=true&edit=true&event_radioBtns=' + radioBtnSelected)
+        }
     }
 }
 
@@ -34,7 +58,7 @@ function getRaidioBtnSelected(radioBtnName) {
     const radioBtns = document.getElementsByName(radioBtnName)
     let radioBtnSelected = null
     // loop over them all
-    for (let i=0; i<radioBtns.length; i++) {
+    for (let i = 0; i < radioBtns.length; i++) {
         // And stick the checked ones onto an array...
         if (radioBtns[i].checked) {
             radioBtnSelected = radioBtns[i].value
@@ -48,7 +72,18 @@ function getRaidioBtnSelected(radioBtnName) {
 // creates a message for the user and clears the url
 function createMessage(message) {
     alert(message)
+    clearURL()
+}
+
+function clearURL() {
     let url = window.location.href
     url = url.substring(0, url.indexOf("?"))
     window.location = url
+}
+
+// append current url
+function appendCurrentURL(url) {
+    currentURL = window.location.href
+    if (!currentURL.includes(url))
+        window.location.search += url
 }

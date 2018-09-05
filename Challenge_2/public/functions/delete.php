@@ -1,5 +1,5 @@
 <?php
-    if (isset($_GET['event_radioBtns'])) {
+    if (isset($_GET['event_radioBtns']) && isset($_GET['delete'])) {
         $eventsTable->delete('event_id', $_GET['event_radioBtns']);
 
         // create a message telling the user what we are doing

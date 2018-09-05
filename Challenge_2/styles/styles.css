@@ -74,9 +74,6 @@ ol {
     border-bottom: .5rem solid rgb(12, 12, 12);
     width: 8rem;
 }
-#event_form {
-    display: none;
-}
 
 /* Table - https://www.youtube.com/watch?v=bHFoobciCTM */
 table {

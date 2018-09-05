@@ -1,15 +1,15 @@
 <?php
-    if (isset($_GET['title']) && isset($_GET['date']) && isset($_GET['create'])) {
+    if (isset($_GET['title']) && isset($_GET['date']) && isset($_GET['edit'])) {
         if ($_GET['title'] && $_GET['date']) {
             $event = [
                 'title' => $_GET['title'],
                 'date' => $_GET['date'],
             ];
     
-            $eventsTable->insert($event);
+            // $eventsTable->insert($event);
     
             // create a message telling the user what we are doing
-            $message = 'This will attempt to create an event with title: \'' . $_GET['title'] . '\', and date: \'' . $_GET['date'] . '\'.';
+            $message = 'This will attempt to edit event with id: ' . $_GET['event_radioBtns'];
 
             // call our method to display the message and clear the url of the parameters
             echo '
@@ -17,6 +17,6 @@
                     createMessage("' . $message . '")
                 </script>
             ';
-        };
-    }     
+        };     
+    };
 ?>
