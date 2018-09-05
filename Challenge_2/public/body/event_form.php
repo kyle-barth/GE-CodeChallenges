@@ -2,11 +2,11 @@
     <h2>Create Event</h2>
     <form method='GET'>
         <p>Title: </p>
-        <input type='text' name="title"></input>
+        <input type='text' name='title' id='event_form_title'></input>
         <p>Date: </p>
-        <input type='date' name="date"></input>
-        <div class='button-container submit-button'>
-            <input type='submit' value='Submit' class='button'></input>
+        <input type='date' name='date' id='event_form_date'></input>
+        <div class='button-container'>
+            <input type='submit' value='Submit' class='button submit-button' onclick='onSubmit()'></input>
         </div>
     </form>
 </div>

@@ -10,7 +10,7 @@ body {
 }
 #container {
     max-width: 60rem;
-    min-width: 30rem;
+    min-width: 35rem;
     margin: 0 auto;
     padding: 0 1.5rem 0 1.5rem;
 }
@@ -56,19 +56,23 @@ ol {
     justify-content: space-between;
 } 
 .button {
-    background: #FC4242;
     border: none;
-    border-bottom: .5rem solid #ba3030;
     color: white;
-    font-weight: 500;
     padding: 1.2rem;
     cursor: pointer;
     text-decoration: none;
     width: 8rem;
 }
+.button-CUD {
+    background: #FC4242;
+    border-bottom: .5rem solid #ba3030;
+}
 .submit-button {
-    margin: -2.3rem 0 0 .1rem;
+    margin: -4.3rem 0 0 .1rem;
     float: right;
+    background: rgb(29, 29, 29);
+    border-bottom: .5rem solid rgb(12, 12, 12);
+    width: 8rem;
 }
 #event_form {
     display: none;

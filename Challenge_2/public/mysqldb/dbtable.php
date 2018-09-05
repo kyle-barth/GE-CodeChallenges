@@ -16,8 +16,9 @@
 			}else{
 				$stmt->execute();
 			}
+
 			return $stmt;
-	  }
+	  	}
 		function delete($field, $value) {
 			$query = 'DELETE FROM ' . $this->table . ' WHERE ' . $field . ' = :value';
 			$stmt = $this->pdo->prepare($query);
@@ -31,12 +32,13 @@
 		function insert($record) {
 			$keys = array_keys($record);
 			$values = implode(', ', $keys);
-			$valuesWithColon = implode(', :', $keys);
-			$query = 'INSERT INTO ' . $this->table . ' (' . $values . ') VALUES (:' . $valuesWithColon . ')';
+			$valuesWithColon = implode('\', \'', $record);
+			$query = 'INSERT INTO ' . $this->table . ' (' . $values . ') VALUES (\'' . $valuesWithColon . '\')';
+
             $stmt = $this->pdo->prepare($query);
+			$stmt->execute();
             
-			if ($this->table=="articles")
-				sendMail($this->table);
+			return $stmt->fetch();
 		}
 		function update($record, $primaryKey) {
 			$query = 'UPDATE ' . $this->table . ' SET ';
