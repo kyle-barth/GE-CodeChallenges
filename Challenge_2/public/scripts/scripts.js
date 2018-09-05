@@ -1,20 +1,24 @@
 // create
 function onCreate() {
+    window.history.replaceState({}, '', clearURL());
     appendCurrentURL('&display=true&create=true')
 }
 
 // edit
 function onEdit() {
+    window.history.replaceState({}, '', clearURL());
     checkOptionSelected('edit')
 }
 
 // delete
 function onDelete() {
+    window.history.replaceState({}, '', clearURL());
     checkOptionSelected('delete')
 }
 
 // submit 
 function onSubmit() {
+    // prevent form from reloading since the logic is handled in the JS 
     $("#event_form").submit(function (e) {
         e.preventDefault();
     });
@@ -22,31 +26,31 @@ function onSubmit() {
     let title = document.getElementById('event_form_title').value
     let date = document.getElementById('event_form_date').value
 
-    //appendCurrentURL('&title=' + document.getElementById('event_form_title').value + '&date=' + document.getElementById('event_form_date').value)
-
     if (title && date && title.value != '' && date.value != '') {
         appendCurrentURL('&title=' + title + '&date=' + date)
     }
     else {
         createMessage("You can\'t leave any fields blank!")
     }
-
 }
 
-// checks if the user selected a radio button or not, outputs a message if not
-function checkOptionSelected(tmp) {
+// handles error checking for edit and delete & appending the URL
+function checkOptionSelected(param) {
+    // checks if the user selected a radio button
     const radioBtnSelected = getRaidioBtnSelected('event_radioBtns')
-    let bool = true
 
+    // if not selected message user
     if (!radioBtnSelected) {
         // user didn't select an option
-        alert('You must select an option to ' + tmp + '!')
+        alert('You must select an option to ' + param + '!')
     } else {
-        if (tmp === 'delete') {
+        // if selected and the user clicked delete
+        if (param === 'delete') {
             // do delete stuff
             appendCurrentURL('&display=true&delete=true&event_radioBtns=' + radioBtnSelected)
         }
-        else {
+        // else if selected and the user clicked edit
+        else if (param === 'edit') {
             // do edit stuff
             appendCurrentURL('&display=true&edit=true&event_radioBtns=' + radioBtnSelected)
         }
@@ -72,13 +76,14 @@ function getRaidioBtnSelected(radioBtnName) {
 // creates a message for the user and clears the url
 function createMessage(message) {
     alert(message)
-    clearURL()
+    const url = clearURL()
+    window.location = url
 }
 
+// empties the URL of all parameters
 function clearURL() {
     let url = window.location.href
-    url = url.substring(0, url.indexOf("?"))
-    window.location = url
+    return url.substring(0, url.indexOf("?"))
 }
 
 // append current url

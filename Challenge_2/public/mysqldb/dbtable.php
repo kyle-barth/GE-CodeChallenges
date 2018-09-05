@@ -6,16 +6,11 @@
 			$this->pdo = $pdo;
 			$this->table = $table;
 		}
-		function search($field, $value) {
-	    	$stmt = $this->pdo->prepare("SELECT * FROM " . $this->table . " " . $field . " ". $value);
-			if (isset($value)) {
-				$criteria = [
-					'value' => $value
-				];
-				$stmt->execute($criteria);
-			}else{
-				$stmt->execute();
-			}
+		function search($value) {
+			$query = "SELECT * FROM " . $this->table . " ". $value;
+
+	    	$stmt = $this->pdo->prepare($query);
+			$stmt->execute();
 
 			return $stmt;
 	  	}
@@ -40,16 +35,19 @@
             
 			return $stmt->fetch();
 		}
-		function update($record, $primaryKey) {
-			$query = 'UPDATE ' . $this->table . ' SET ';
-			$parameters = [];
-			foreach ($record as $key => $value) {
-				$parameters[] = $key . ' = :' .$key;
+		function update($record, $primaryKey, $primaryKeyValue) {
+			$keys = array_keys($record);
+			$insertData = '';
+			for ($i=0; $i < count($keys); $i++) {
+				$insertData .= '`' . $keys[$i] . '` = \'' . $record[$keys[$i]] . '\', ';
 			}
-			$query .= implode(', ', $parameters);
-			$query .= ' WHERE ' . key($record) . ' = :primaryKey';
-			$record['primaryKey'] = $primaryKey;
-			$stmt = $this->pdo->prepare($query);
+			$insertData = rtrim($insertData, ", ");
+
+            $query = 'UPDATE ' . $this->table . ' SET ' . $insertData . ' WHERE `' . $primaryKey . '` = ' . $primaryKeyValue;
+            $stmt = $this->pdo->prepare($query);
+			$stmt->execute();
+
+			return $stmt->fetch();
 		}
 	}
 ?>

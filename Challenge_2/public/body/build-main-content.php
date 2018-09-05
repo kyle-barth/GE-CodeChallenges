@@ -4,7 +4,7 @@
 
     // only attempt to display data if we are connected to the db
     if (!$db_error) {
-        $results=$eventsTable->search('', '');
+        $results=$eventsTable->search('');
         
         // only add the buttons and the resutls to the page if there is any results
         if ($results) {
