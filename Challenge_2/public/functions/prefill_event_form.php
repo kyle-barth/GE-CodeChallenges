@@ -7,14 +7,16 @@
             // prefill the inputs
             foreach ($event as $row) {
                 echo '
-                    <script type="text/javascript">
+                    <script type=\'text/javascript\'>
                         window.onload = function() {
-                            document.getElementById(\'event_form_title\').value = \''. $row['title'] . '\'
-                            document.getElementById(\'event_form_date\').value = \''. $row['date'] . '\'
-                        }
+                            // set the title to Edit Event when edit is selected
+                            document.getElementById(\'form_title\').innerHTML = \'Edit Event\'
+                            document.getElementById(\'event_form_title\').value = \''. $row['title'] . '\';
+                            document.getElementById(\'event_form_date\').value = \''. $row['date'] . '\';
+                        };
                     </script>
                 ';
             };
         };     
     };
-?>
+?> 

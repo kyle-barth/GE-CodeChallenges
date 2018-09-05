@@ -10,16 +10,16 @@
         </style>
     ';
     
-    // change the title depending when edit or create is selected
-    $form_title = isset($_GET['create']) ? 'Create Event' : 'Edit Event';
-
-    echo '
-        <script type="text/javascript">
-            window.onload = function() {
-                document.getElementById(\'form_title\').innerHTML = \''. $form_title . '\'
-            }
-        </script>
-    ';
+    // set the title to Create Event when create is selected
+    if (isset($_GET['create'])) {
+        echo '
+            <script type="text/javascript">
+                window.onload = function() {
+                    document.getElementById(\'form_title\').innerHTML = \'Create Event\'
+                }
+            </script>
+        ';
+    };
 ?>
 
 <div id='event_form' class='content-block'>

@@ -1,18 +1,18 @@
 // create
 function onCreate() {
-    window.history.replaceState({}, '', clearURL());
+    window.history.replaceState({}, '', clearURL())
     appendCurrentURL('&display=true&create=true')
 }
 
 // edit
 function onEdit() {
-    window.history.replaceState({}, '', clearURL());
+    window.history.replaceState({}, '', clearURL())
     checkOptionSelected('edit')
 }
 
 // delete
 function onDelete() {
-    window.history.replaceState({}, '', clearURL());
+    window.history.replaceState({}, '', clearURL())
     checkOptionSelected('delete')
 }
 
